@@ -259,7 +259,7 @@
   }
 
    @media (max-width:576px){
-    .card{grid-template-columns: 1fr; padding:16px; padding-top: 600px;}
+    .card{grid-template-columns: 1fr; padding:16px; padding-top: 1000px;}
     .left{order:1}
     .right{order:2}
     .heart-wrap{width:180px;height:160px}
