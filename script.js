@@ -106,7 +106,7 @@
     const b = (theirNameInput.value || 'Someone').trim();
     // sanitize basic HTML to avoid script injection in innerText (we use text content)
     namesLine.textContent = `${a} ❤️ ${b}`;
-    askLine.textContent = 'Will you marry me? If yes. Take screenshot and sent me or block me.';
+    askLine.textContent = 'Will you accept me? If yes. Take screenshot and sent me or block me forever.';
     // show panel
     proposal.classList.remove('hidden');
 

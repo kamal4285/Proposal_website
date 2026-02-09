@@ -162,7 +162,7 @@
   }
 
   .actions{
-    display:flex;
+    /* display:flex; */
     gap:12px;
     align-items:center;
     margin-bottom:18px;
@@ -237,6 +237,13 @@
     .left{order:1}
     .right{order:2}
     .heart-wrap{width:200px;height:180px}
+    #namesForm{
+      display: none;
+    }
+    #revealBtn{
+      align-items: center;
+
+    }
   }
 
   /* subtle floating rose petals animation inside proposal */
@@ -259,9 +266,9 @@
   }
 
    @media (max-width:576px){
-    .card{grid-template-columns: 1fr; padding:16px; padding-top: 1000px;}
+    .card{grid-template-columns: 1fr; padding:16px; padding-top: 750px;}
     .left{order:1}
-    .right{order:2}
+    .right{order:2; text-align: center; align-items: center;}
     .heart-wrap{width:180px;height:160px}
   }
 
