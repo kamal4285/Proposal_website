@@ -266,7 +266,7 @@
   }
 
    @media (max-width:576px){
-    .card{grid-template-columns: 1fr; padding:16px; padding-top: 750px;}
+    .card{grid-template-columns: 1fr; padding:16px; padding-top: 650px;}
     .left{order:1}
     .right{order:2; text-align: center; align-items: center;}
     .heart-wrap{width:180px;height:160px}
