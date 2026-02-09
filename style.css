@@ -1,0 +1,285 @@
+
+  :root{
+    --bg:#0f0b16;
+    --card:#1a1420;
+    --accent:#ff2d95;
+    --rose:#c21a3b;
+    --gold:#ffd166;
+    --muted:#cfc7d3;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Montserrat, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(1200px 800px at 10% 10%, rgba(255,45,149,0.06), transparent),
+                radial-gradient(1000px 700px at 90% 90%, rgba(194,26,59,0.04), transparent),
+                var(--bg);
+    color:var(--muted);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+  }
+
+  .card{
+    width:960px;
+    max-width:96%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border:1px solid rgba(255,255,255,0.04);
+    border-radius:18px;
+    padding:28px;
+    display:grid;
+    grid-template-columns: 420px 1fr;
+    gap:24px;
+    align-items:center;
+    box-shadow: 0 8px 40px rgba(2,2,6,0.7), inset 0 1px 0 rgba(255,255,255,0.02);
+    position:relative;
+    overflow:hidden;
+  }
+
+  /* Left panel - heart + rose */
+  .left{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+    padding:14px 10px;
+  }
+
+  /* Big heart made with CSS */
+  .heart-wrap{
+    width:260px;
+    height:230px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    transform-origin:center;
+  }
+
+  .heart {
+    position:relative;
+    width:160px;
+    height:160px;
+    transform: rotate(-45deg);
+    background: linear-gradient(180deg, #ff6aa6 0%, #ff2d95 60%);
+    border-radius:20px 20px 0 0;
+    filter: drop-shadow(0 8px 18px rgba(255,45,149,0.18));
+    animation: pulse 2.2s ease-in-out infinite;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:visible;
+  }
+  .heart::before, .heart::after{
+    content:"";
+    position:absolute;
+    width:160px;
+    height:160px;
+    background:linear-gradient(180deg, #ff6aa6 0%, #ff2d95 60%);
+    border-radius:50%;
+    top:-80px;
+    left:0;
+  }
+  .heart::after{
+    left:80px;
+    top:0;
+  }
+  @keyframes pulse{
+    0%{transform: rotate(-45deg) scale(1)}
+    50%{transform: rotate(-45deg) scale(1.06)}
+    100%{transform: rotate(-45deg) scale(1)}
+  }
+
+  /* subtle shine */
+  .heart .shine{
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), rgba(255,255,255,0.05) 40%, transparent 60%);
+    transform: translate(-30px, -36px) rotate(45deg);
+    mix-blend-mode: screen;
+    opacity:0.9;
+  }
+
+  /* rose SVG container */
+  .rose-wrap{
+    width:180px;
+    height:200px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: transform .8s cubic-bezier(.2,.9,.3,1), opacity .6s;
+    transform-origin:center bottom;
+    opacity:0;
+  }
+  .rose-wrap.show{ transform: translateY(-8px) scale(1.02); opacity:1; }
+
+  /* Right panel - inputs & message */
+  .right{
+    padding:6px 10px;
+  }
+  h1{
+    margin:0 0 6px 0;
+    font-family: 'Parisienne', cursive;
+    font-size:38px;
+    color:var(--gold);
+    letter-spacing:0.6px;
+  }
+  p.lead{
+    margin:0 0 16px 0;
+    color:#e6dfe9;
+    opacity:0.95;
+  }
+
+  .form{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+  }
+  label{
+    font-size:13px;
+    color:#d9d0db;
+  }
+  input[type="text"]{
+    background: rgba(255,255,255,0.02);
+    border:1px solid rgba(255,255,255,0.04);
+    padding:12px 14px;
+    border-radius:10px;
+    color:var(--muted);
+    font-size:15px;
+    outline:none;
+    min-width:160px;
+    transition: box-shadow .15s, border-color .15s;
+  }
+  input[type="text"]:focus{
+    border-color: rgba(255,45,149,0.65);
+    box-shadow:0 6px 18px rgba(255,45,149,0.08);
+  }
+
+  .actions{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:18px;
+  }
+  .btn{
+    background: linear-gradient(90deg, var(--accent), #ff6aa6);
+    color:white;
+    padding:12px 18px;
+    border-radius:12px;
+    border:0;
+    cursor:pointer;
+    font-weight:700;
+    box-shadow: 0 8px 20px rgba(194,26,59,0.14);
+    transition: transform .12s ease, box-shadow .12s;
+  }
+  .btn:active{ transform: translateY(1px) }
+  .btn.ghost{
+    background:transparent;
+    color:var(--muted);
+    border:1px solid rgba(255,255,255,0.04);
+    box-shadow:none;
+    font-weight:600;
+  }
+
+  /* proposal message */
+  .proposal{
+    background: linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
+    border:1px dashed rgba(255,255,255,0.03);
+    padding:18px;
+    border-radius:12px;
+    min-height:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    flex-direction:column;
+    gap:8px;
+    color:#ffeef8;
+    position:relative;
+    overflow:visible;
+  }
+  .proposal .names{
+    font-size:22px;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:0.6px;
+  }
+  .proposal .ask{
+    font-size:20px;
+    color:var(--muted);
+  }
+  .proposal.hidden{ opacity:0.02; transform: translateY(8px); pointer-events:none; }
+
+  /* confetti canvas */
+  canvas.confetti{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+
+  /* small footer */
+  .foot{
+    margin-top:20px;
+    font-size:12px;
+    color:#b8afc1;
+    text-align:right;
+  }
+
+  /* responsive */
+  @media (max-width:880px){
+    .card{grid-template-columns: 1fr; padding:18px}
+    .left{order:1}
+    .right{order:2}
+    .heart-wrap{width:200px;height:180px}
+  }
+
+  /* subtle floating rose petals animation inside proposal */
+  .petal {
+    position:absolute;
+    width:14px;
+    height:20px;
+    background: radial-gradient(circle at 40% 30%, #ffd2e9, #ff8ab5 60%);
+    transform-origin:center;
+    border-radius:7px 7px 3px 3px;
+    opacity:0.95;
+    pointer-events:none;
+  }
+
+  /* small accessibility focus */
+  .sr-only{
+    position:absolute!important;
+    height:1px;width:1px;overflow:hidden;
+    clip:rect(1px,1px,1px,1px);white-space:nowrap;
+  }
+
+   @media (max-width:576px){
+    .card{grid-template-columns: 1fr; padding:16px}
+    .left{order:1}
+    .right{order:2}
+    .heart-wrap{width:180px;height:160px}
+  }
+
+  /* subtle floating rose petals animation inside proposal */
+  .petal {
+    position:absolute;
+    width:10px;
+    height:16px;
+    background: radial-gradient(circle at 40% 30%, #ffd2e9, #ff8ab5 60%);
+    transform-origin:center;
+    border-radius:7px 7px 3px 3px;
+    opacity:0.95;
+    pointer-events:none;
+  }
+
+  /* small accessibility focus */
+  .sr-only{
+    position:absolute!important;
+    height:1px;width:1px;overflow:hidden;
+    clip:rect(1px,1px,1px,1px);white-space:nowrap;
+  }

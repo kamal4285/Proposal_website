@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Romantic Proposal 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================
+       GLOBAL STYLES
+    ========================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* ==========================
+       HEART SHAPE (PURE CSS)
+    ========================== */
+    .heart {
+      position: relative;
+      width: 220px;
+      height: 200px;
+      background: #ff4d6d;
+      transform: rotate(-45deg);
+      animation: beat 1.5s infinite;
+      box-shadow: 0 0 30px rgba(255, 77, 109, 0.6);
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 200px;
+      background: #ff4d6d;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -110px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 110px;
+      top: 0;
+    }
+
+    /* Heart Beat Animation */
+    @keyframes beat {
+      0%, 100% {
+        transform: rotate(-45deg) scale(1);
+      }
+      50% {
+        transform: rotate(-45deg) scale(1.08);
+      }
+    }
+
+    /* ==========================
+       NAME INSIDE HEART
+    ========================== */
+    .name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: rotate(45deg) translate(-50%, -50%);
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+      animation: glow 2s infinite alternate;
+      white-space: nowrap;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px white;
+      }
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ffb3c1;
+      }
+    }
+
+    /* ==========================
+       PROPOSAL TEXT
+    ========================== */
+    .message {
+      font-size: 1.4rem;
+      color: #8b0000;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ==========================
+       BUTTONS
+    ========================== */
+    .buttons {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 28px;
+      font-size: 1rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.3s;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.1);
+    }
+
+    #noBtn {
+      background: white;
+      color: #ff4d6d;
+      position: relative;
+    }
+
+    /* ==========================
+       YES MESSAGE
+    ========================== */
+    .yes-message {
+      display: none;
+      font-size: 1.8rem;
+      color: #fff;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* ==========================
+       FLOATING HEARTS
+    ========================== */
+    .floating-heart {
+      position: absolute;
+      bottom: -20px;
+      font-size: 24px;
+      animation: floatUp 4s linear forwards;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* ==========================
+       RESPONSIVE DESIGN
+    ========================== */
+    @media (max-width: 600px) {
+      .heart {
+        width: 160px;
+        height: 150px;
+      }
+
+      .heart::before,
+      .heart::after {
+        width: 160px;
+        height: 150px;
+      }
+
+      .heart::before {
+        top: -80px;
+      }
+
+      .heart::after {
+        left: 80px;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+
+      .message {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEART -->
+    <div class="heart">
+      <div class="name">Sejuti</div>
+    </div>
+
+    <!-- PROPOSAL TEXT -->
+    <div class="message">
+      Will you be mine forever? 💍
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+      <button id="yesBtn">Yes ❤️</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <!-- YES RESPONSE -->
+    <div class="yes-message" id="yesMessage">
+      Yay! You just made my heart the happiest 💖✨
+    </div>
+
+  </div>
+
+  <script>
+    /* ==========================
+       YES BUTTON INTERACTION
+    ========================== */
+    const yesBtn = document.getElementById('yesBtn');
+    const yesMessage = document.getElementById('yesMessage');
+
+    yesBtn.addEventListener('click', () => {
+      yesMessage.style.display = 'block';
+      launchHearts();
+    });
+
+    /* ==========================
+       NO BUTTON ESCAPE LOGIC
+    ========================== */
+    const noBtn = document.getElementById('noBtn');
+
+    noBtn.addEventListener('mouseenter', moveNoButton);
+    noBtn.addEventListener('click', moveNoButton);
+
+    function moveNoButton() {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    /* ==========================
+       FLOATING HEARTS EFFECT
+    ========================== */
+    function launchHearts() {
+      for (let i = 0; i < 25; i++) {
+        createHeart();
+      }
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+  </script>
+
+</body>
+</html>
